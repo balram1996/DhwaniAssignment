@@ -1,52 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cvv card</title>
-    <link rel="stylesheet" href="Card.css" type="text/css">
-</head>
-<body>
+    <link rel="stylesheet" href="Card.css" type="text/css" />
+  </head>
+  <body>
     <div class="parentContainer">
-    <h1>Enter Your Card Number</h1>
-    <div class="Container">
+      <h1>Enter Your Card Number</h1>
+      <div class="Container">
         <div class="sets">
-            <input type="text" maxlength="1" id="ist" onkeyup="clickEvent(this,'sec')">
-            <input type="text" maxlength="1" id="sec" onkeyup="clickEvent(this,'third')">
-            <input type="text" maxlength="1" id="third" onkeyup="clickEvent(this,'fourth')">
-            <input type="text" maxlength="1" id="fourth" onkeyup="clickEvent(this,'fifth')">
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="ist"
+            onkeyup="clickEvent(this,'sec')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="sec"
+            onkeyup="clickEvent(this,'third')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="third"
+            onkeyup="clickEvent(this,'fourth')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="fourth"
+            onkeyup="clickEvent(this,'fifth')"
+          />
         </div>
         <div class="sets">
-            <input type="text" maxlength="1" id="fifth" onkeyup="clickEvent(this,'sixeth')">
-            <input type="text" maxlength="1" id="sixeth" onkeyup="clickEvent(this,'seventh')">
-            <input type="text" maxlength="1" id="seventh" onkeyup="clickEvent(this,'eigth')">
-            <input type="text" maxlength="1" id="eigth" onkeyup="clickEvent(this,'ningth')">
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="fifth"
+            onkeyup="clickEvent(this,'sixeth')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="sixeth"
+            onkeyup="clickEvent(this,'seventh')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="seventh"
+            onkeyup="clickEvent(this,'eigth')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="eigth"
+            onkeyup="clickEvent(this,'ningth')"
+          />
         </div>
         <div class="sets">
-            <input type="text" maxlength="1" id="ningth" onkeyup="clickEvent(this,'tenth')">
-            <input type="text" maxlength="1" id="tenth" onkeyup="clickEvent(this,'elevent')">
-            <input type="text" maxlength="1" id="elevent" onkeyup="clickEvent(this,'twelth')">
-            <input type="text" maxlength="1" id="twelth" onkeyup="clickEvent(this,'thirteen')">
+         
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="ningth"
+            onkeyup="clickEvent(this,'tenth')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="tenth"
+            onkeyup="clickEvent(this,'elevent')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="elevent"
+            onkeyup="clickEvent(this,'twelth')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="twelth"
+            onkeyup="clickEvent(this,'thirteen')"
+          />
         </div>
         <div class="sets">
-            <input type="text" maxlength="1" id="thirteen" onkeyup="clickEvent(this,'fourteen')">
-            <input type="text" maxlength="1" id="fourteen" onkeyup="clickEvent(this,'fifteen')">
-            <input type="text" maxlength="1" id="fifteen" onkeyup="clickEvent(this,'sixteen')"> 
-            <input type="text" maxlength="1" id="sixteen" onkeyup="clickEvent(this,'sixteen')">
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="thirteen"
+            onkeyup="clickEvent(this,'fourteen')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="fourteen"
+            onkeyup="clickEvent(this,'fifteen')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="fifteen"
+            onkeyup="clickEvent(this,'sixteen')"
+          />
+          <input
+            type="text"
+            name="card"
+            maxlength="1"
+            id="sixteen"
+            onkeyup="clickEvent(this,'sixteen')"
+          />
         </div>
+      </div>
+      <button id="btn" onclick="addCard()">CONFIRM</button>
+      <div id="showData">
+        <h1 id="hdd"></h1>
+      </div>
     </div>
-    <button type="button" id="btn">CONFIRM</button>
-    </div>
-</body>
-<script type="text/javascript">
+  </body>
+  <script type="text/javascript"> 
+
+    let btn = document.getElementById("btn");
+    let display = document.getElementById("showData");
+    let hdd = document.getElementById("hdd");
+    let form = document.querySelector("#form");
+
+    const configs = () => {
+      const cardData = JSON.parse(localStorage.getItem("cardData"));
+      if (!cardData) {
+        localStorage.setItem("cardData", JSON.stringify([]));
+      } else {
+        cardData.forEach((d) => {
+          addInnerHTML(d);
+        });
+      }
+    };
+
     
-     
-    function clickEvent(first,last){
-        if(first.value.length){
-             document.getElementById(last).focus();
-        }
+    function clickEvent(first, last) {
+      if (first.value.length) {
+        document.getElementById(last).focus();
+      }
     }
 
-</script>
+    function addCard(event){
+        //event.preventDefault();
+      var inp = document.getElementsByName('card');
+      var result = "";
+      for (var i = 0; i < inp.length; i++){
+        result += inp[i].value +"";
+      }
+
+
+      if(result.length<16){
+          alert("Please fill all the data")
+      }
+      else{
+        var data = {
+        text: result,
+      };
+      }
+      
+      let cardDetail = JSON.parse(localStorage.getItem("cardData"));
+      cardDetail.push(data);
+      localStorage.setItem("cardData", JSON.stringify(cardDetail));
+      addInnerHTML(data);
+      for (var i = 0; i < inp.length; i++){
+        inp[i].value=null;
+      }
+    };
+
+    addInnerHTML = (data) => {
+    const listItem = document.createElement("div");
+
+    const span = document.createElement("span");
+    span.textContent = data.text;
+
+    const a = document.createElement("BUTTON");
+    a.textContent = "delete";
+    a.className = "delbtn";
+    a.addEventListener("click", deleteBtn);
+    listItem.appendChild(span);
+    listItem.appendChild(a);
+    display.append(listItem);
+  };
+
+  const deleteBtn = (e)=>{
+    const t = e.target.parentElement;
+    console.log(t)
+    const text = t.firstChild.textContent;
+    console.log(text)
+    let cards = JSON.parse(localStorage.getItem("cardData"));
+    card = cards.filter((td) => td.text != text);
+    localStorage.setItem("cardData", JSON.stringify(card));
+    t.remove();
+  };
+
+  configs()
+  </script>
 </html>
