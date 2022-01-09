@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cvv card</title>
+    <link rel="stylesheet" href="Card.css" type="text/css">
+</head>
+<body>
+    <div class="parentContainer">
+    <h1>Enter Your Card Number</h1>
+    <div class="Container">
+        <div class="sets">
+            <input type="text" maxlength="1" id="ist" onkeyup="clickEvent(this,'sec')">
+            <input type="text" maxlength="1" id="sec" onkeyup="clickEvent(this,'third')">
+            <input type="text" maxlength="1" id="third" onkeyup="clickEvent(this,'fourth')">
+            <input type="text" maxlength="1" id="fourth" onkeyup="clickEvent(this,'fifth')">
+        </div>
+        <div class="sets">
+            <input type="text" maxlength="1" id="fifth" onkeyup="clickEvent(this,'sixeth')">
+            <input type="text" maxlength="1" id="sixeth" onkeyup="clickEvent(this,'seventh')">
+            <input type="text" maxlength="1" id="seventh" onkeyup="clickEvent(this,'eigth')">
+            <input type="text" maxlength="1" id="eigth" onkeyup="clickEvent(this,'ningth')">
+        </div>
+        <div class="sets">
+            <input type="text" maxlength="1" id="ningth" onkeyup="clickEvent(this,'tenth')">
+            <input type="text" maxlength="1" id="tenth" onkeyup="clickEvent(this,'elevent')">
+            <input type="text" maxlength="1" id="elevent" onkeyup="clickEvent(this,'twelth')">
+            <input type="text" maxlength="1" id="twelth" onkeyup="clickEvent(this,'thirteen')">
+        </div>
+        <div class="sets">
+            <input type="text" maxlength="1" id="thirteen" onkeyup="clickEvent(this,'fourteen')">
+            <input type="text" maxlength="1" id="fourteen" onkeyup="clickEvent(this,'fifteen')">
+            <input type="text" maxlength="1" id="fifteen" onkeyup="clickEvent(this,'sixteen')"> 
+            <input type="text" maxlength="1" id="sixteen" onkeyup="clickEvent(this,'sixteen')">
+        </div>
+    </div>
+    <button type="button" id="btn">CONFIRM</button>
+    </div>
+</body>
+<script type="text/javascript">
+    
+     
+    function clickEvent(first,last){
+        if(first.value.length){
+             document.getElementById(last).focus();
+        }
+    }
+
+</script>
+</html>
